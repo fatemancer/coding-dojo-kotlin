@@ -1,4 +1,4 @@
-package ru.technicalExcellence
+package ru.technicalExcellence.codingDojo
 
 class HelloWorld {
     fun helloWorld(): String {
