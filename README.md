@@ -3,7 +3,7 @@
 ## Install JDK (on Ubuntu)
 
 ```sh
-sudo apt install openjdk-14-jdk
+sudo apt install openjdk-17-jdk
 ```
 
 ### Run test
