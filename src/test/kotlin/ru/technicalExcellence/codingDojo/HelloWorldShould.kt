@@ -7,9 +7,9 @@ class HelloWorldShould {
 
     @Test
     fun returnHelloWorld() {
-        val expected = "Hello, World!"
+        val expected = "Hello World"
 
-        val actual = HelloWorld().helloWorld();
+        val actual = HelloWorld().helloWorld()
 
         assertEquals(expected, actual)
     }
