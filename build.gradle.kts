@@ -9,8 +9,8 @@ repositories {
     mavenCentral()
 }
 
-val junitVersion = "5.8.1"
-val mockitoVersion = "4.0.0"
+val junitVersion = "5.8.2"
+val mockitoVersion = "4.1.0"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
