@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.6.0"
+    kotlin("jvm") version "1.7.0"
 }
 
 group = "ru.technicalExcellence.codingDojo"
@@ -10,7 +10,7 @@ repositories {
 }
 
 val junitVersion = "5.8.2"
-val mockitoVersion = "4.1.0"
+val mockitoVersion = "4.6.1"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
