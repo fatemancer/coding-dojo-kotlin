@@ -11,6 +11,7 @@ repositories {
 
 val junitVersion = "5.8.2"
 val mockitoVersion = "4.6.1"
+val mockitoKotlinVersion = "4.0.0"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -19,7 +20,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion")
     testImplementation("org.mockito:mockito-junit-jupiter:$mockitoVersion")
 }
 
