@@ -9,12 +9,6 @@ repositories {
     mavenCentral()
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
-    }
-}
-
 val junitVersion = "5.9.2"
 val mockitoVersion = "5.1.1"
 val mockitoKotlinVersion = "4.1.0"
