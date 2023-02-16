@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.7.0"
+    kotlin("jvm") version "1.8.10"
 }
 
 group = "ru.technicalExcellence.codingDojo"
@@ -9,9 +9,15 @@ repositories {
     mavenCentral()
 }
 
-val junitVersion = "5.8.2"
-val mockitoVersion = "4.6.1"
-val mockitoKotlinVersion = "4.0.0"
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
+val junitVersion = "5.9.2"
+val mockitoVersion = "5.1.1"
+val mockitoKotlinVersion = "4.1.0"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
