@@ -1,5 +1,7 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-    kotlin("jvm") version "1.8.10"
+    kotlin("jvm")
 }
 
 group = "ru.technicalExcellence.codingDojo"
@@ -9,9 +11,9 @@ repositories {
     mavenCentral()
 }
 
-val junitVersion = "5.9.2"
-val mockitoVersion = "5.1.1"
-val mockitoKotlinVersion = "4.1.0"
+val junitVersion: String by project
+val mockitoVersion: String by project
+val mockitoKotlinVersion: String by project
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -22,6 +24,13 @@ dependencies {
     testImplementation("org.mockito:mockito-core:$mockitoVersion")
     testImplementation("org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion")
     testImplementation("org.mockito:mockito-junit-jupiter:$mockitoVersion")
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = "17"
+    }
 }
 
 tasks.withType<Test> {
