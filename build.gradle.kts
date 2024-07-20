@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm")
+    kotlin("jvm") version "2.0.0"
 }
 
 group = "ru.technicalExcellence.codingDojo"
@@ -17,6 +17,7 @@ val mockitoKotlinVersion: String by project
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+    runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
