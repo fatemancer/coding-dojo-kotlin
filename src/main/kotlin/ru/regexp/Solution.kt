@@ -14,41 +14,63 @@ class Solution {
 
         var skip: Char? = null
         var matched = 0
-
         var idx = chars.size - 1
+
         while (matched != s.length) {
 
-            val letter = chars[idx]
-
-            if (skip == letter || skip == '.') {
-                matched++
-                idx--
-                continue
+            if (idx < 0) {
+                return false
             }
+            val letter = chars[idx]
 
             if (stack.isEmpty()) {
                 return false
             } else {
                 val rx = stack.pop()
-                skip = null
-                when (rx) {
-                    letter -> {  matched++; idx-- }
-                    '.' -> { matched++; idx-- }
-                    '*' -> {
-                        val actual = stack.pop()
-                        if (actual == letter || actual == '.') {
-                            skip = actual
-                            matched++
+                if (rx == letter) {
+                    matched++
+                    idx--
+                } else
+                if (rx == '.') {
+                    matched++
+                    idx--
+                } else
+                if (rx == '*') {
+                    var actualMatchingSymbol = stack.pop()
+                    if (stack.isEmpty()) {
+                        if (actualMatchingSymbol == '.') {
+                            return true
+                        } else {
+                            while (idx >= 0) {
+                                if (chars[idx] == actualMatchingSymbol) {
+                                    matched++
+                                }
+                                idx--
+                            }
+                            continue
                         }
                     }
-                    else -> return false
+                    var nextMatchingSymbol = stack.peek()
+
+                    while (idx >= 0) {
+                        if (chars[idx] == nextMatchingSymbol) {
+                            return false
+                        }
+                        idx--
+                        matched++
+                    }
+
+                } else {
+                    return false
                 }
-
             }
-
         }
-        print(stack)
-        return true
+
+
+
+
+        return stack.isEmpty()
+
     }
 }
 
@@ -59,20 +81,24 @@ class Solution {
 
 fun main() {
     val s = Solution()
+    s.isMatch("addddc", "a.*c").also { println(it == true) }
+    s.isMatch("aa", "a*").also { println(it == true) }
+    s.isMatch("abcd", "d*").also { println(it == false) }
+
+    s.isMatch("aaaaaac", "a*c").also { println(it == true) }
+
+    s.isMatch("mississippi", "mis*is*ip*.").also { println(it == true) }
+
     s.isMatch("aaa", "ab*ac*a").also { println(it == true) }
     s.isMatch("aaa", "ab*a").also { println(it == false) }
 
-    s.isMatch("mississippi", "mis*is*ip*.").also { println(it == true) }
     s.isMatch("aaa", "aaaa").also { println(it == false) }
     s.isMatch("aa", "aa").also { println(it == true) }
-    s.isMatch("aa", "a*").also { println(it == true) }
     s.isMatch("ab", ".*").also { println(it == true) }
     s.isMatch("aa", "a").also { println(it == false) }
-    s.isMatch("aaaaaac", "a*c").also { println(it == true) }
     s.isMatch("aaaaaacd", "a*c").also { println(it == false) }
     s.isMatch("a", "a*").also { println(it == true) }
 
-    s.isMatch("addddc", "a.*c").also { println(it == true) }
     s.isMatch("addaddc", "a.*c").also { println(it == true) }
     s.isMatch("adddd", "a.*").also { println(it == true) }
     s.isMatch("aab", "c*a*b").also { println(it == true) }
