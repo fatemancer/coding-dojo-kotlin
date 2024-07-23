@@ -1,8 +1,6 @@
 package ru.leet.container
 
-import java.lang.Integer.max
 import java.lang.Integer.min
-import java.lang.Math.pow
 
 class Solution {
 
@@ -12,33 +10,14 @@ class Solution {
         var containerEnd = height.size - 1
         var maxArea = 0
 
-        /*
-
-         */
         var currLeft = 0
         var currRight = height.size - 1
-        while(currLeft < height.size - 1) {
-            val a1 = area(currLeft, currRight, height)
-            currLeft++
-            val a2 = area(currLeft, currRight, height)
-            if (a2 >= a1) {
-                maxArea = Math.max(maxArea, a2)
-                continue
+        while (currRight >= 0) {
+            maxArea = Math.max(maxArea, area(currLeft, currRight, height))
+            if (height[currLeft] < height[currRight]) {
+                currLeft++
             } else {
-                maxArea = Math.max(maxArea, a1)
-                while (currRight > 0) {
-                    val b1 = area(currLeft, currRight, height)
-                    currRight--
-                    val b2 = area(currLeft, currRight, height)
-                    if (b2 >= b1) {
-                        maxArea = Math.max(maxArea, b2)
-                        continue
-                    } else {
-                        maxArea = Math.max(maxArea, b1)
-                        break
-                    }
-
-                }
+                currRight--
             }
         }
 
@@ -62,7 +41,7 @@ fun area(currLeft: Int, currRight: Int, height: IntArray): Int {
     var dim = min(height[currLeft], height[currRight])
     var diff = Math.abs(currRight - currLeft)
     var area = dim * diff
-    println("$dim * $diff")
+    //println("$dim * $diff")
     return area
 }
 
