@@ -15,6 +15,7 @@ class Solution {
         var skip: Char? = null
         var matched = 0
         var idx = chars.size - 1
+        var str = charArrayOf().concatToString()
 
         while (matched != s.length) {
 
